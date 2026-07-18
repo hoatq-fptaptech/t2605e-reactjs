@@ -1,10 +1,10 @@
-function Card(){
+function Card(props){
     var x = 10;
-    var name = "T2605E";
+    var name = classroom.name;
     var menu = ["Vịt quay Bắc Kinh","Lẩu Tứ Xuyên","Sườn xào chua ngọt"];
     var room = {
-        room_name: "Kẻ chợ",
-        time: "17:30-21:30"
+        room_name: classroom.room_name,
+        time: classroom.time
     }
     x++;
     return (

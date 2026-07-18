@@ -3,22 +3,19 @@ import reactLogo from './assets/react.svg'
 import viteLogo from './assets/vite.svg'
 import heroImg from './assets/hero.png'
 import './App.css'
-import Card from './components/shared/Card'
+import { Route, Routes } from 'react-router-dom'
+import Home from './pages/Home'
+import About from './pages/About'
+
 
 function App() {
-  const [count, setCount] = useState(0)
-
+  
   return (
     <>
-      <h1>Hello world!</h1>
-      <Card/>
-      <Card/>
-      <Card/>
-      <Card/>
-      <Card/>
-      <Card/>
-      <Card/>
-      
+      <Routes>
+        <Route path='/' Component={Home} />
+        <Route path='/about' Component={About} />
+      </Routes>
     </>
   )
 }
