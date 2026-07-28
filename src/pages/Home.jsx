@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Button, Container } from "react-bootstrap";
 import Card from "../components/shared/Card";
 
@@ -13,7 +13,9 @@ function Home(){
     const clickMe = ()=>{
         setX(x+1);// x = x+1
     }
-
+    useEffect(()=>{
+        alert("Có đứa nào vừa mới thay đổi X");
+    },[x]);
     return (
         <Container>
             <h1>Home Page</h1>
