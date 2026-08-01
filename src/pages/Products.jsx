@@ -1,14 +1,19 @@
 import { Col, Container, Row } from "react-bootstrap";
 import Item from "../components/shared/product/grid/Item";
 import { useEffect, useState } from "react";
+import apiClient from "../utils/api";
+import URL from "../constants/URL";
 
 function Products(){
     const [list,setList] = useState([]);
     const get_products = ()=>{
-        const url = "https://dummyjson.com/products/search?q=phone";
-        fetch(url).then(rs=>rs.json()).then(data=>{
+        apiClient.get(URL.PRODUCT_SEARCH).then(rs=>{
+            const data = rs.data;
             setList(data.products);
-        });
+        })
+        // fetch(url).then(rs=>rs.json()).then(data=>{
+        //     setList(data.products);
+        // });
     }
     // did mount - muốn cập nhật dữ liệu sau khi đã sinh ra giao diện
    useEffect(()=>{
