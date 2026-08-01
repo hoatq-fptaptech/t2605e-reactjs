@@ -7,6 +7,7 @@ import Home from './pages/Home'
 import About from './pages/About'
 import Header from './components/layout/Header'
 import Products from './pages/Products'
+import Category from './pages/Category'
 function App() {
   return (
     <>
@@ -24,6 +25,7 @@ function App() {
             <Route path='/' Component={Home} />
             <Route path='/about' Component={About} />
             <Route path='/products' Component={Products} />
+            <Route path='/category/:slug' Component={Category} />
           </Routes>
       </main>
     </>

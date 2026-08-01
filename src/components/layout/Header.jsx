@@ -1,9 +1,19 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Button, Container, Form, Modal, Nav, Navbar, NavDropdown } from "react-bootstrap";
+import { Link } from "react-router-dom";
 
 function Header(){
   const [show, setShow] = useState(false);
-
+  const [cats,setCats] = useState([]);
+  const get_cats = ()=>{
+    const url = "https://dummyjson.com/products/categories";
+    fetch(url).then(rs=>rs.json()).then(data=>{
+      setCats(data);
+    })
+  }
+  useEffect(()=>{
+    get_cats();
+  },[]);
   const handleClose = ()=>{
     setShow(false);
   };
@@ -18,16 +28,16 @@ function Header(){
           <Nav className="me-auto">
             <Nav.Link href="#home">Home</Nav.Link>
             <Nav.Link href="#link">Link</Nav.Link>
-            <NavDropdown title="Dropdown" id="basic-nav-dropdown">
-              <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.2">
-                Another action
-              </NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
-              <NavDropdown.Divider />
-              <NavDropdown.Item href="#action/3.4">
-                Separated link
-              </NavDropdown.Item>
+            <NavDropdown title="Category" id="basic-nav-dropdown">
+              {
+                cats.map((e,k)=>{
+                  return (
+                    <NavDropdown.Item key={k}>
+                      <Link to={"/category/"+e.slug}>{e.name}</Link>
+                    </NavDropdown.Item>
+                  )
+                })
+              }
             </NavDropdown>
             <Nav.Link onClick={handleShow}>Login</Nav.Link>
           </Nav>

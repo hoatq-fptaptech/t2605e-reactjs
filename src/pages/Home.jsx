@@ -14,7 +14,7 @@ function Home(){
         setX(x+1);// x = x+1
     }
     useEffect(()=>{
-        alert("Có đứa nào vừa mới thay đổi X");
+        // alert("Có đứa nào vừa mới thay đổi X");
     },[x]);
     return (
         <Container>
