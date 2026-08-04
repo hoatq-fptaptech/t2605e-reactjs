@@ -1,8 +1,10 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Button, Container, Form, Modal, Nav, Navbar, NavDropdown } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import Context from "../../hooks/context";
 
 function Header(){
+  const {state,setState} = useContext(Context);
   const [show, setShow] = useState(false);
   const [cats,setCats] = useState([]);
   const get_cats = ()=>{
@@ -40,6 +42,7 @@ function Header(){
               }
             </NavDropdown>
             <Nav.Link onClick={handleShow}>Login</Nav.Link>
+            <Nav.Link>Cart ({state.cart.length})</Nav.Link>
           </Nav>
         </Navbar.Collapse>
       </Container>

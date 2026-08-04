@@ -8,9 +8,12 @@ import About from './pages/About'
 import Header from './components/layout/Header'
 import Products from './pages/Products'
 import Category from './pages/Category'
+import { STATE } from './hooks/INIT_STATE'
+import { AppProvider } from './hooks/context'
 function App() {
+  const [state,setState] = useState(STATE);
   return (
-    <>
+    <AppProvider value={{state,setState}}>
       <Header />
       <nav>
         <div className='container'>
@@ -28,7 +31,7 @@ function App() {
             <Route path='/category/:slug' Component={Category} />
           </Routes>
       </main>
-    </>
+    </AppProvider>
   )
 }
 

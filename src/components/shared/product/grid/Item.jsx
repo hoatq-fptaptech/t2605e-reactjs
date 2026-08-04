@@ -1,7 +1,15 @@
+import { useContext, useState } from "react";
 import { Button, Card } from "react-bootstrap";
+import Context from "../../../../hooks/context";
 
 function Item(props){
     const product = props.product;
+    const {state,setState} = useContext(Context);
+    const add_to_cart = ()=>{
+       const cart = state.cart;
+       cart.push(product);
+       setState({...state,cart:cart});
+    }
     return (
         <Card>
             <Card.Img variant="top" src={product.thumbnail} />
@@ -10,7 +18,7 @@ function Item(props){
                 <Card.Text>
                     {product.price}
                 </Card.Text>
-                <Button variant="primary">Add To cart</Button>
+                <Button onClick={add_to_cart} variant="primary">Add To cart</Button>
             </Card.Body>
         </Card>
     )
