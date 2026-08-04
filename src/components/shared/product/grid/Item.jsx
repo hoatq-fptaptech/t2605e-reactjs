@@ -1,14 +1,21 @@
 import { useContext, useState } from "react";
 import { Button, Card } from "react-bootstrap";
 import Context from "../../../../hooks/context";
+import { ACTION } from "../../../../hooks/reducer";
 
 function Item(props){
     const product = props.product;
-    const {state,setState} = useContext(Context);
+    const {state,dispatch} = useContext(Context);
     const add_to_cart = ()=>{
        const cart = state.cart;
        cart.push(product);
-       setState({...state,cart:cart});
+      // setState({...state,cart:cart});
+      dispatch(
+        {
+            type: ACTION.UPDATE_CART,
+            payload: cart
+        }
+        )
     }
     return (
         <Card>

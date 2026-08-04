@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import Context from "../../hooks/context";
 
 function Header(){
-  const {state,setState} = useContext(Context);
+  const {state,dispatch} = useContext(Context);
   const [show, setShow] = useState(false);
   const [cats,setCats] = useState([]);
   const get_cats = ()=>{

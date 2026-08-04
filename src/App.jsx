@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useReducer, useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from './assets/vite.svg'
 import heroImg from './assets/hero.png'
@@ -10,10 +10,11 @@ import Products from './pages/Products'
 import Category from './pages/Category'
 import { STATE } from './hooks/INIT_STATE'
 import { AppProvider } from './hooks/context'
+import reducer from './hooks/reducer'
 function App() {
-  const [state,setState] = useState(STATE);
+  const [state,dispatch] = useReducer(reducer,STATE);
   return (
-    <AppProvider value={{state,setState}}>
+    <AppProvider value={{state,dispatch}}>
       <Header />
       <nav>
         <div className='container'>
