@@ -2,7 +2,8 @@ var data = {
     cart: [],
     favourite: [],
     loading: false,
-    permissions:[]
+    permissions:[],
+    keyword:""
 };
 if(localStorage.getItem("state")){
     data = JSON.parse(localStorage.getItem("state"));
