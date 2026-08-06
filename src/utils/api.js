@@ -1,7 +1,8 @@
 import axios from "axios";
+import ENV from "../constants/ENV";
 
 const apiClient = axios.create({
-  baseURL: 'https://dummyjson.com',
+  baseURL: ENV.api_url,
   timeout: 5000,
   headers: {
     'Content-Type': 'application/json',
