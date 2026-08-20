@@ -8,7 +8,7 @@ function Header(){
   const [show, setShow] = useState(false);
   const [cats,setCats] = useState([]);
   const get_cats = ()=>{
-    const url = "https://dummyjson.com/products/categories";
+    const url = "http://localhost:3000/api/category";
     fetch(url).then(rs=>rs.json()).then(data=>{
       setCats(data);
     })
@@ -35,7 +35,7 @@ function Header(){
                 cats.map((e,k)=>{
                   return (
                     <NavDropdown.Item key={k}>
-                      <Link to={"/category/"+e.slug}>{e.name}</Link>
+                      <Link to={"/category/"+e.slug}>{e.title}</Link>
                     </NavDropdown.Item>
                   )
                 })
